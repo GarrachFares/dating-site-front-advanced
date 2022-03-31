@@ -6,6 +6,13 @@ import { HeroComponent } from './components/hero/hero.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { HomeComponent } from './components/home/home.component';
+
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 
 
@@ -14,18 +21,30 @@ import { BrowserModule } from '@angular/platform-browser';
     NavbarComponent,
     SignInComponent,
     HeroComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent,
+    TestimonialsComponent,
+    CarouselComponent,
+    HomeComponent,
+    
+    SignUpComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   exports: [
     NavbarComponent,
     SignInComponent,
     HeroComponent,
-    ContactComponent
+    ContactComponent,
+    FooterComponent,
+    TestimonialsComponent,
+    CarouselComponent,
+    HomeComponent,
+    SignUpComponent
   ]
 })
 export class CoreModule { }
