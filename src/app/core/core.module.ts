@@ -16,6 +16,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FAQComponent } from './pages/faq/faq.component';
 import { ExploreComponent } from './pages/explore/explore.component';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -35,11 +37,13 @@ import { ExploreComponent } from './pages/explore/explore.component';
     ExploreComponent,
     
   ],
+  providers: [AuthService],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     NavbarComponent,
@@ -53,6 +57,7 @@ import { ExploreComponent } from './pages/explore/explore.component';
     HomeComponent,
     FAQComponent,
     ExploreComponent,
+    HttpClientModule,
     
   ]
 })
