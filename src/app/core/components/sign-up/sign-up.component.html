@@ -1,45 +1,62 @@
 <div class="container p-5">
-    <form class="row g-3">
+  <h1 class="display-3 p-2">fill the form</h1>
+    <form #formulaire="ngForm"class="row g-3">
         <div class="col-md-6">
           <label for="first-name" class="form-label">first name</label>
-          <input type="text" class="form-control" id="first-name">
+          <input required type="text" class="form-control" id="first-name" ngModel name="firstname" #firstname="ngModel">
         </div>
         <div class="col-md-6">
           <label for="last-name" class="form-label">last-name</label>
-          <input type="text" class="form-control" id="last-name">
+          <input required type="text" class="form-control" id="last-name" ngModel name="lastname" #lastname="ngModel">
+        </div>
+        <div class="col-md-6">
+          <label for="user-name" class="form-label">user-name</label>
+          <input required type="text" class="form-control" id="user-name" ngModel name="username" #username="ngModel">
+        </div>
+        <div class="col-3">
+          <label for="inputage" class="form-label">age</label>
+            <input required type="number" min="18" class="form-control" id="inputage" ngModel name="age" #age="ngModel">
         </div>
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPassword4">
+            <input required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" type="password" class="form-control" id="inputPassword4" ngModel name="password" #password="ngModel">
+            <div class="alert alert-danger" *ngIf="password.invalid && password.dirty">password must contain at least 1 Maj 1 Min and lengthmin of 7</div>
           </div>
           <div class="col-md-6">
             <label for="confirmPassword4" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword4">
+            <input required type="password" class="form-control" id="confirmPassword4" ngModel name="cpassword" #cpassword="ngModel" >
+           <!-- <div class="alert alert-danger" *ngIf="password.value!=cpass ">password must contain at least 1 Maj 1 Min and lengthmin of 7</div>-->
           </div>
-        <div class="col-12">
+        <div class="col-9">
           <label for="inputemail" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputemail" placeholder="gg@mail.com">
+          <input required type="email" class="form-control" id="inputemail" placeholder="gg@mail.com" ngModel name="email" #email="ngModel">
         </div>
         
+        
         <div class="col-md-6">
-          <label for="inputContry" class="form-label">Contry</label>
-          <input type="text" class="form-control" id="inputContry">
+          <label for="inputContry" class="form-label">Country</label>
+          <select class="form-select" aria-label="Default select example"id="inputContry" ngModel name="country" #country="ngModel">
+            <option selected>select your counry</option>
+            <option *ngFor="let country of countries">{{country.name.common}}</option>
+          </select>
         </div>
         <div class="col-md-6">
             <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <input required type="text" class="form-control" id="inputCity" ngModel name="city" #city="ngModel">
           </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">Passions</label>
-          <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
-          </select>
+        <div class="col-md-6">
+          <ng-multiselect-dropdown required ngModel name="passions" #passions="ngModel"
+          [placeholder]="'Select Your Passions'"
+        [settings]="dropdownSettings"
+        [data]="dropdownList">
+    </ng-multiselect-dropdown>
         </div>
-        <div class="col-md-2">
-          <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
+        
+      
+  
+
+
+        
         <div class="col-12">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="gridCheck">
@@ -49,7 +66,7 @@
           </div>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button type="submit" class="btn btn-primary" [disabled]="formulaire.invalid" type="submit"(click)="logger(formulaire)">Sign in</button>
         </div>
       </form>
 </div>
