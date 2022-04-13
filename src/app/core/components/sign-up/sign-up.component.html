@@ -29,7 +29,8 @@
           </div>
         <div class="col-9">
           <label for="inputemail" class="form-label">Email</label>
-          <input required type="email" class="form-control" id="inputemail" placeholder="gg@mail.com" ngModel name="email" #email="ngModel">
+          <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" class="form-control" id="inputemail" placeholder="gg@mail.com" ngModel name="email" #email="ngModel">
+          <div class="alert alert-danger" *ngIf="email.invalid && email.dirty">email must be of form "cc@aaa.tt"</div>
         </div>
         
         

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -10,13 +11,26 @@ import { NgForm } from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
-
+  public invalidLogin = false 
+  public errorMessage =''
+  
+  constructor(private authService : AuthService) { }
+  
   ngOnInit(): void {
   }
 
   login(form:NgForm){
     console.log(form);
+    this.authService.login(form.value).subscribe(
+      response => {
+        if(response.message){
+          this.errorMessage = response.message
+          this.invalidLogin = true
+        }else{
+          console.log(response)
+        }
+      }
+      )
     
 
   }

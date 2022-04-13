@@ -10,9 +10,9 @@
           <div class="modal-body p-5 pt-0">
             <form #loginform="ngForm">
               <div class="form-floating mb-3">
-                <input required pattern="(?=[a-z0-9._%+-]+@+[a-z0-9._%+-].{2,}+.+[a-z0-9._%+-].{1,})$" type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" ngModel name="email" #email="ngModel">
+                <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" ngModel name="username" #username="ngModel">
                 <label for="floatingInput">Email address</label>
-                <div class="alert alert-danger" *ngIf="email.invalid && email.dirty">email must be of form "cc@aaa.tt"</div>
+                <div class="alert alert-danger" *ngIf="username.invalid && username.dirty">email must be of form "cc@aaa.tt"</div>
               </div>
               <div class="form-floating mb-3">
                 <input required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" ngModel name="password" #password="ngModel">

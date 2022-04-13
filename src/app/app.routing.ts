@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
+//import { SignInComponent } from "./core/components/sign-in/sign-in.component";
 
 
 import { SignUpComponent } from "./core/components/sign-up/sign-up.component";
@@ -16,6 +17,7 @@ const APP_ROUTING: Routes=[
     {path:'sign-up',component:SignUpComponent},
     {path:'faq',component:FAQComponent},
     {path:'explore',component:ExploreComponent}
+    //{path:'sign-in',component:SignInComponent}
 ]
 
 export const ROUTING = RouterModule.forRoot(APP_ROUTING)

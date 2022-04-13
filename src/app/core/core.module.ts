@@ -20,6 +20,8 @@ import { ExploreComponent } from './pages/explore/explore.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ExploreCardComponent } from './components/explore-card/explore-card.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { AuthService } from './services/auth.service';
+
 
 
 
@@ -41,6 +43,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ExploreCardComponent,
     
   ],
+  providers: [AuthService],
   imports: [
     CommonModule,
     BrowserModule,
@@ -49,6 +52,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
     MatSelectCountryModule.forRoot('de')
+    
     
   ],
   exports: [
@@ -65,6 +69,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ExploreComponent,
     SidebarComponent,
     ExploreCardComponent,
+    HttpClientModule,
     
   ]
 })
