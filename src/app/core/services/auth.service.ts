@@ -45,6 +45,7 @@ export class AuthService {
       password:credentials.password ,
       username:credentials.username,
       country:credentials.country,
+      birthDate:credentials.date,
     }
     return this.http.post(this.apiUrl+'/auth/register',cred).pipe(
       tap((res:any) =>{
