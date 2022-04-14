@@ -38,7 +38,14 @@ export class AuthService {
   }
 
   register(credentials:any){
-    const cred = {name:credentials.name, email:credentials.email , password:credentials.password}
+    const cred = {
+      firstName:credentials.firstname,
+      lastName:credentials.lastname,
+      email:credentials.email ,
+      password:credentials.password ,
+      username:credentials.username,
+      country:credentials.country,
+    }
     return this.http.post(this.apiUrl+'/auth/register',cred).pipe(
       tap((res:any) =>{
         res.hasOwnProperty('token') && localStorage.setItem('Token',res.token) 

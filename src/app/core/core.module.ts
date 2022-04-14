@@ -10,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
+//import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
 
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -51,7 +51,7 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
-    MatSelectCountryModule.forRoot('de')
+   // MatSelectCountryModule.forRoot('de')
     
     
   ],
