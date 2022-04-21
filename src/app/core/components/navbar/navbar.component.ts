@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,8 +12,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  navigate(){
-    
+  
+  isloggedin(){
+    return (!!localStorage.getItem('Token'))
   }
 
 }

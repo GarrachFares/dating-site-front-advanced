@@ -1,10 +1,90 @@
-.sidebar {
-    margin: 0;
-    padding: 0;
-    left:0;
-    width: 200px;
-    background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #fff;
+}
+/*--- dima enzidouha*/
+body::-webkit-scrollbar{
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track{
+  background: grey;
+}
+body::-webkit-scrollbar-thumb{
+  background: #78c2ad;
+}
+/*-----------------*/
+
+.navbar-expand {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  margin-left: -300px;
+  background-color: #78c2ad;;
+  transition: 0.4s;
+}
+
+.nav-link {
+  font-size: 1.25em;
+}
+
+#menu-btn{
+  border-radius: 50%;
+}
+button>i{
+  transform: rotate(0deg);
+  transition: transform var(--transition-speed);
+}
+button>i:hover{
+
+  transform: rotate(-180deg);
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: #ffffff26;
+}
+
+.dropdown-menu {
+  background-color: #78c2ad;;
+}
+
+.dropdown-item:active,
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: #ffffff26;
+}
+
+.my-container {
+  transition: 0.4s;
+}
+
+
+
+/* for navbar */
+
+.active-nav {
+  margin-left: 0;
+}
+
+
+
+
+.active-cont {
+  margin-left: 250px;
+}
+
+#menu-btn {
+  background-color: #78c2ad;;
+  color: #fff;
+}
+
+#menu-btn:focus {
+  box-shadow: 0 0 0 0.25rem #7952b344;
+}

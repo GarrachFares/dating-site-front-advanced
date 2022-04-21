@@ -23,7 +23,7 @@ export class AuthService {
     return this.http.post(this.apiUrl+'/auth/login',cred).pipe(
       tap((res:any) =>{
         res.hasOwnProperty('token') && localStorage.setItem('Token',res.token) 
-        this.router.navigate(['/'])
+        this.router.navigate(['explore'])
       }) , 
       catchError((err)=> {
         return new Observable(res => {
@@ -50,7 +50,7 @@ export class AuthService {
     return this.http.post(this.apiUrl+'/auth/register',cred).pipe(
       tap((res:any) =>{
         res.hasOwnProperty('token') && localStorage.setItem('Token',res.token) 
-        this.router.navigate(['/'])
+        this.router.navigate(['explore'])
       }) , 
       catchError((err)=> {
         return new Observable(res => {
