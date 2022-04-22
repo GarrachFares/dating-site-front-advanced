@@ -1,0 +1,5 @@
+<button (click)="createRoom()">create room</button>
+<div *ngFor="let room of (rooms | async)?.items">
+    <h1>name :{{room.name}}</h1>
+    <h1>id :{{room.id}}</h1>
+</div>

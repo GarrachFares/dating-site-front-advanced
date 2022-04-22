@@ -22,6 +22,7 @@ import { ExploreCardComponent } from './components/explore-card/explore-card.com
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AuthService } from './services/auth.service';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { MessagingComponent } from './pages/messaging/messaging.component';
 
 
 export function tokenGetter() {
@@ -50,6 +51,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     ExploreComponent,
     SidebarComponent,
     ExploreCardComponent,
+    MessagingComponent,
     
   ],
   providers: [AuthService],
