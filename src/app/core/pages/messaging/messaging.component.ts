@@ -12,11 +12,13 @@ export class MessagingComponent implements OnInit {
   constructor(private chatService : ChatService) { }
 
   ngOnInit(): void {
-    //this.chatService.createRoom();
+    
   }
 
   createRoom(){
     this.chatService.createRoom();
+    console.log(this.rooms);
+    
   }
   
 

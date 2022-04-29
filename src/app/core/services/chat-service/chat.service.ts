@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { RoomI, RoomPaginateI } from '../../Model/room.interface';
+import { UserI } from '../../Model/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +18,15 @@ export class ChatService {
   }
 
   getMyRooms() {
-    return this.socket.fromEvent<any>('rooms'); // fix type later
+    return this.socket.fromEvent<RoomPaginateI>('rooms'); 
   }
 
   createRoom(){
-    const user2 = {
-      id: "bf7466ee-9aa7-4c5e-b7d7-1f619dcd2f0a"
+    const user2:UserI = {
+      id: 1
     }
-    const room = {
-      name: 'testRoom',
+    const room:RoomI = {
+      name: 'testRoom1',
       users: [user2]
     }
     this.socket.emit('createRoom', room);
