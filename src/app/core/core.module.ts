@@ -24,7 +24,11 @@ import { AuthService } from './services/auth.service';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { MessagingComponent } from './pages/messaging/messaging.component';
 
-
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+//import { MatSelectionList } from '@angular/material/se'
+import {MatListModule} from '@angular/material/list';
+import { CreateRoomComponent } from './pages/messaging/create-room/create-room.component';
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -52,6 +56,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     SidebarComponent,
     ExploreCardComponent,
     MessagingComponent,
+    CreateRoomComponent,
     
   ],
   providers: [AuthService],
@@ -62,7 +67,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatListModule ,
     SocketIoModule.forRoot(config)
+    
    // MatSelectCountryModule.forRoot('de')
     
     
