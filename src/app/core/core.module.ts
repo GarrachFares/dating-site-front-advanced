@@ -22,9 +22,19 @@ import { ExploreCardComponent } from './components/explore-card/explore-card.com
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AuthService } from './services/auth.service';
 import { HeaderComponent } from './components/header/header.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { MessagingComponent } from './pages/messaging/messaging.component';
 
 
+export function tokenGetter() {
+  return localStorage.getItem('Token') || '{}' ;
+}
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
+  extraHeaders:{
+    authorization: tokenGetter()
+  }
+} };
 
 
 @NgModule({
@@ -43,6 +53,7 @@ import { HeaderComponent } from './components/header/header.component';
     SidebarComponent,
     ExploreCardComponent,
     HeaderComponent,
+    MessagingComponent,
     
   ],
   providers: [AuthService],
@@ -53,6 +64,7 @@ import { HeaderComponent } from './components/header/header.component';
     FormsModule,
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
+    SocketIoModule.forRoot(config)
    // MatSelectCountryModule.forRoot('de')
     
     
@@ -72,6 +84,7 @@ import { HeaderComponent } from './components/header/header.component';
     SidebarComponent,
     ExploreCardComponent,
     HttpClientModule,
+    
     
   ]
 })

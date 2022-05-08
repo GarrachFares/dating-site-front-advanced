@@ -22,8 +22,8 @@ export class AuthService {
     console.log(cred)
     return this.http.post(this.apiUrl+'/auth/login',cred).pipe(
       tap((res:any) =>{
-        res.hasOwnProperty('token') && localStorage.setItem('Token',res.token) 
-        this.router.navigate(['/explore'])
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token) 
+        this.router.navigate(['explore'])
       }) , 
       catchError((err)=> {
         return new Observable(res => {
@@ -49,8 +49,8 @@ export class AuthService {
     }
     return this.http.post(this.apiUrl+'/auth/register',cred).pipe(
       tap((res:any) =>{
-        res.hasOwnProperty('token') && localStorage.setItem('Token',res.token) 
-        this.router.navigate(['/'])
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token) 
+        this.router.navigate(['explore'])
       }) , 
       catchError((err)=> {
         return new Observable(res => {
@@ -69,22 +69,3 @@ export class AuthService {
   }
   
 }
-
-
-
-
-/*
-login(credentials:any){
-    const cred = {email:credentials.email , password:credentials.password}
-    return this.http.post('http://localhost:4000/login',cred).pipe(map((response: any) => {
-      let result = response;
-      if(result && result.token){
-        this.userIsLoggedIn = true
-        return true
-      }
-      return false 
-    }
-    ),catchError((e)=>  e )
-   )
-  }
-*/
