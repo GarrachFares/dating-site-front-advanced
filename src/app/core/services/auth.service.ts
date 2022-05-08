@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core'
 import { HttpClient }from '@angular/common/http'
-import { catchError, tap } from "rxjs/operators"; 
+import { catchError, tap } from "rxjs/operators";
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 //import { apiUrl } from '../utilities';
-//import {JwtHelperService} from '@auth0/angular-jwt';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   apiUrl = 'http://localhost:3000'
-  constructor(private http:HttpClient, private router:Router) { }
+  constructor(private http:HttpClient,
+              private router:Router,
+              private jwtHelper :JwtHelperService
+  ) { }
 
   userIsLoggedIn(){
     return (!!localStorage.getItem('Token')) //&& !this.helper.isTokenExpired()) fix this later
@@ -22,9 +25,9 @@ export class AuthService {
     console.log(cred)
     return this.http.post(this.apiUrl+'/auth/login',cred).pipe(
       tap((res:any) =>{
-        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token) 
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
         this.router.navigate(['explore'])
-      }) , 
+      }) ,
       catchError((err)=> {
         return new Observable(res => {
           let reqData = {
@@ -49,9 +52,9 @@ export class AuthService {
     }
     return this.http.post(this.apiUrl+'/auth/register',cred).pipe(
       tap((res:any) =>{
-        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token) 
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
         this.router.navigate(['explore'])
-      }) , 
+      }) ,
       catchError((err)=> {
         return new Observable(res => {
           let reqData = {
@@ -67,5 +70,20 @@ export class AuthService {
     localStorage.removeItem('Token')
     this.router.navigate(['/login'])
   }
-  
+
+  getLoggedInUser() {
+    let token = this.getDecodedToken();
+    return JSON.parse(token) ;
+  }
+
+  getDecodedToken(){
+    let token = localStorage.getItem('Token')
+    if(!token){
+      token = "{}"
+    }
+    console.log(this.jwtHelper.decodeToken(token))
+    let tokenPayload = JSON.stringify(this.jwtHelper.decodeToken(token));
+    console.log(tokenPayload)
+    return tokenPayload;
+  }
 }

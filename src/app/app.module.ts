@@ -8,19 +8,28 @@ import { AppComponent } from './app.component';
 import { ROUTING } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { TokenInterceptor } from './core/services/token.interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     ROUTING,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    BrowserAnimationsModule,
+    FormsModule
   ],
-  providers: [
+
+  providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, 
+    JwtHelperService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

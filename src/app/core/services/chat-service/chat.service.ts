@@ -10,6 +10,11 @@ export class ChatService {
 
   constructor(private socket: Socket) { }
 
+  
+  emitPaginateRooms(limit: number, page: number) {
+    this.socket.emit('paginateRooms', { limit, page });
+  }
+
   sendMessage() {
   }
 
@@ -22,12 +27,12 @@ export class ChatService {
   }
 
   createRoom(){
-    const user2:UserI = {
-      id: 1
-    }
+    // const user2:UserI = {
+    //   id: 1
+    // }
     const room:RoomI = {
       name: 'testRoom1',
-      users: [user2]
+      users: []
     }
     this.socket.emit('createRoom', room);
   }
