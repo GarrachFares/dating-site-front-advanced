@@ -1,8 +1,21 @@
-<div class="container">
-    <div class="row">
+<body [ngClass]="{'toggle-sidebar':sidebar}">
+
+    <body [ngClass]="sidebar? 'toggle-sidebar':''">
+    
+    
+
+    <app-header (toggle_sidebar)="processReq($event)"></app-header>
         
-            <app-sidebar></app-sidebar>
+    <app-sidebar></app-sidebar>
+    
+
+
+</body>
+    
+    <script src="assets/js/main.js"></script>
+    
+    
         
 
-    </div>
-</div>
+    
+

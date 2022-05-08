@@ -21,6 +21,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ExploreCardComponent } from './components/explore-card/explore-card.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AuthService } from './services/auth.service';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -41,6 +42,7 @@ import { AuthService } from './services/auth.service';
     ExploreComponent,
     SidebarComponent,
     ExploreCardComponent,
+    HeaderComponent,
     
   ],
   providers: [AuthService],

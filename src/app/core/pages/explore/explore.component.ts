@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExploreComponent implements OnInit {
 
-  constructor() { }
+  sidebar:boolean = false;
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    
+  }
+
+  processReq(status:boolean){
+    if(this.sidebar==status){
+      this.sidebar = !this.sidebar
+    }
+    else{
+      this.sidebar=status;
+    }
+    
+
   }
 
 }

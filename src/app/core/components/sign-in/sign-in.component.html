@@ -19,7 +19,7 @@
                 <label for="floatingPassword">Password</label>
                 <div class="alert alert-danger" *ngIf="password.invalid && password.dirty">password must contain at least 1 Maj 1 Min and lengthmin of 7</div>
               </div>
-              <button class="w-100 mb-2 btn btn-lg rounded-4 btn-warning" [disabled]="loginform.invalid" type="submit"(click)="login(loginform)" >sign in</button>
+              <button class="w-100 mb-2 btn btn-lg rounded-4 btn-warning " [disabled]="loginform.invalid" data-bs-dismiss="modal" type="submit"(click)="login(loginform)" >sign in</button>
               <small class="text-muted p-1">you don't have an account sign up!!</small>
               <button [routerLink]="['sign-up']"class="w-100 mb-2 btn btn-lg rounded-4 btn-outline-warning" type="submit">sign up</button>
               <hr class="my-4">
