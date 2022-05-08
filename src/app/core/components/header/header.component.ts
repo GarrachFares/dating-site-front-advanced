@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserI } from '../../Model/user.interface';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +11,9 @@ export class HeaderComponent implements OnInit {
 
   
   @Output() toggle_sidebar = new EventEmitter();
+  user: UserI = this.authService.getLoggedInUser();
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }

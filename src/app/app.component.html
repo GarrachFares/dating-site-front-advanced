@@ -1,7 +1,8 @@
 
-<app-navbar *ngIf="true || !isloggedin()" ></app-navbar>
-<app-sign-in></app-sign-in>
+<app-navbar *ngIf="isloggedin()" ></app-navbar>
 
+
+<app-sign-in *ngIf="isloggedin()"></app-sign-in>
 
 
 <router-outlet></router-outlet>

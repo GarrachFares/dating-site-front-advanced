@@ -1,35 +1,20 @@
-<body [ngClass]="{'toggle-sidebar':sidebar}">
-
-    <body [ngClass]="sidebar? 'toggle-sidebar':''">
-    
-    
-
-    <app-header (toggle_sidebar)="processReq($event)"></app-header>
+<body [ngClass]="{ 'toggle-sidebar': sidebar }">
+    <router-outlet></router-outlet>
+    <main id="main" class="main">
         
-    <app-sidebar></app-sidebar>
-    
-        
-
-    
-<!--<div class="container">
-    <div class="row">
-
-            {{title|async}}
+<app-header (toggle_sidebar)="processReq($event)"></app-header>
+<app-sidebar></app-sidebar>
 
 
-    </div>
-</div>-->
-<app-create-room></app-create-room>
-<app-messaging></app-messaging>
+  
+  
     
 
+   
+  </main>
+  
 
 </body>
-    
-    <script src="assets/js/main.js"></script>
-    
-    
-        
 
-    
+<script src="assets/js/main.js"></script>
 
