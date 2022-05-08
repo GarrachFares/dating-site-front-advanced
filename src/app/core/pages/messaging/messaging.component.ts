@@ -16,7 +16,7 @@ export class MessagingComponent implements OnInit {
 
   rooms$: Observable<RoomPaginateI> = this.chatService.getMyRooms();
   selectedRoom = null;
-  //user: UserI = this.authService.getLoggedInUser();
+  user: UserI = this.authService.getLoggedInUser();
 
   constructor(private chatService: ChatService, private authService: AuthService) { }
 
@@ -35,13 +35,13 @@ export class MessagingComponent implements OnInit {
   onPaginateRooms(pageEvent: PageEvent) {
     this.chatService.emitPaginateRooms(pageEvent.pageSize, pageEvent.pageIndex);
   }
-  
+
 
   createRoom(){
     this.chatService.createRoom();
     console.log(this.rooms$);
-    
+
   }
-  
+
 
 }

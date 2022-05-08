@@ -1,4 +1,30 @@
-<button (click)="createRoom()">create room</button>
+<!--TODO: refactor this with hero page-->
+<div class="container-fluid">
+  <div
+    class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+    style="background-color: #ffee88"
+  >
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1">
+        Welcome Back {{ user.username }}
+      </h1>
+      <p class="lead">
+        explore rooms below and join the one you please <br>
+        or create your own room
+      </p>
+     <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <a class="btn btn-info" aria-current="page" [routerLink]="['sign-up']" routerLinkActive="active"> Create a new room</a>
+      </div>-->
+      <button type="button" class="btn btn-outline-info w-auto me-1 mb-0 " data-bs-toggle="modal" data-bs-target="#roomModal">
+        Create a new room
+      </button>
+    </div>
+    <div class="col-lg-4">
+      <img src="" alt="" />
+    </div>
+  </div>
+</div>
+
 <!-- <div *ngFor="let room of (rooms$ | async)?.items">
     <h1>name :{{room.name}}</h1>
     <h1>id :{{room.id}}</h1>
@@ -7,7 +33,7 @@
 <div class="container">
     <mat-card>
       <div style="display: flex; flex-direction: row;">
-  
+
         <div>
           <div>
             <span style="display: flex; flex-direction: row; align-items: baseline;">
@@ -16,7 +42,7 @@
             </span>
            <!-- <button  [routerLink]="['../create-room']">Create new Room</button> -->
           </div>
-  
+
           <!-- <div   *ngIf="(rooms$|async)?.items?.length > 0; else no_rooms" class="rooms"> -->
             <div   *ngIf="true" class="rooms">
             <mat-selection-list [multiple]="false" (selectionChange)="onSelectRoom($event)">
@@ -40,13 +66,13 @@
         <!--
         <div class="chatroom">
           <app-chat-room [chatRoom]="selectedRoom"></app-chat-room>
-  
+
         </div>
       -->
       </div>
     </mat-card>
   </div>
-  
+
   <ng-template #no_rooms>
     <div>
       No Chatrooms for you so far, please create one or get invited
