@@ -37,11 +37,11 @@ export class MessagingComponent implements OnInit {
   }
 
 
-  createRoom(){
-    this.chatService.createRoom();
+ /* createRoom(){
+    this.chatService.createRoom(roo);
     console.log(this.rooms$);
 
-  }
+  }*/
 
 
 }

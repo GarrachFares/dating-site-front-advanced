@@ -10,7 +10,7 @@ export class ChatService {
 
   constructor(private socket: Socket) { }
 
-  
+
   emitPaginateRooms(limit: number, page: number) {
     this.socket.emit('paginateRooms', { limit, page });
   }
@@ -23,17 +23,10 @@ export class ChatService {
   }
 
   getMyRooms() {
-    return this.socket.fromEvent<RoomPaginateI>('rooms'); 
+    return this.socket.fromEvent<RoomPaginateI>('rooms');
   }
 
-  createRoom(){
-    // const user2:UserI = {
-    //   id: 1
-    // }
-    const room:RoomI = {
-      name: 'testRoom1',
-      users: []
-    }
+  createRoom(room : RoomI){
     this.socket.emit('createRoom', room);
   }
 }
