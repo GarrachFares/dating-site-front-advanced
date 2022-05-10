@@ -86,4 +86,31 @@ export class AuthService {
     console.log(tokenPayload)
     return tokenPayload;
   }
+
+  editProfil(credentials:any){
+    const cred = {
+      firstName:credentials.firstname,
+      lastName:credentials.lastname,
+      email:credentials.email ,
+      username:credentials.username,
+      country:credentials.country,
+      city:credentials.city,
+    }
+    return this.http.post(this.apiUrl+'/auth/editprofil',cred).pipe(
+      tap((res:any) =>{
+        //res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        console.log(res);
+        
+        this.router.navigate(['/explore'])
+      }) ,
+      catchError((err)=> {
+        return new Observable(res => {
+          let reqData = {
+            message:err.error,
+            status:err.status
+          }
+          res.next(reqData)
+        })})
+   )
+  }
 }

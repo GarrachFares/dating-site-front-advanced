@@ -24,4 +24,8 @@ export class HeaderComponent implements OnInit {
     this.toggle_sidebar.emit(true);
   }
 
+  logout(){
+    this.authService.logout();
+  }
+
 }
