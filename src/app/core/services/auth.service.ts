@@ -89,19 +89,21 @@ export class AuthService {
 
   editProfil(credentials:any){
     const cred = {
-      firstName:credentials.firstname,
-      lastName:credentials.lastname,
+      firstname:credentials.firstname,
+      lastname:credentials.lastname,
       email:credentials.email ,
       username:credentials.username,
       country:credentials.country,
       city:credentials.city,
+      id:credentials.id
     }
     return this.http.post(this.apiUrl+'/auth/editprofil',cred).pipe(
       tap((res:any) =>{
-        //res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
         console.log(res);
         
-        this.router.navigate(['/explore'])
+        
+        //this.router.navigate(['/explore'])
       }) ,
       catchError((err)=> {
         return new Observable(res => {

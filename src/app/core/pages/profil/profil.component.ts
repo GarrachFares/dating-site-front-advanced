@@ -5,39 +5,38 @@ import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  styleUrls: ['./profil.component.css'],
 })
 export class ProfilComponent implements OnInit {
-  
   user: UserI = this.authService.getLoggedInUser();
-  public errorMessage =''
-  edited:boolean=false;
+  public errorMessage = '';
+  edited: boolean = false;
 
-  constructor(private authService: AuthService,private router:Router) { }
-  
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  editProfil(editform:NgForm){
+  editProfil(editform: NgForm) {
+    console.log(editform.value.username);
+
     console.log(editform);
-    this.authService.editProfil(editform.value).subscribe(
-      response => {
-        if(response.message){
-          this.errorMessage = response.message
-          console.log(this.errorMessage)
-        }else{
-          console.log(response)
-        }
+    this.authService.editProfil(editform.value).subscribe((response) => {
+      if (response.message) {
+        this.errorMessage = response.message;
+        console.log(this.errorMessage);
+      } else {
+        console.log(response);
+        window.location.reload()
+        this.edited = true;
+        
+       
       }
-    )
-    this.edited = true;
+    });
+    
+
     
   }
-  
-
 }
