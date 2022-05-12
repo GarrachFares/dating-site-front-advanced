@@ -32,6 +32,8 @@ import {MatListModule} from '@angular/material/list';
 import { CreateRoomComponent } from './pages/messaging/create-room/create-room.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import {RoomComponent} from "./pages/messaging/room/room.component";
+import {MessageComponent} from "./pages/messaging/message/message.component";
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -63,7 +65,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     CreateRoomComponent,
     ProfilComponent,
     DashboardComponent,
-    
+    RoomComponent,
+    MessageComponent
   ],
   providers: [AuthService],
   imports: [
@@ -77,10 +80,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     MatCardModule,
     MatListModule ,
     SocketIoModule.forRoot(config)
-    
+
    // MatSelectCountryModule.forRoot('de')
-    
-    
+
+
   ],
   exports: [
     NavbarComponent,
@@ -99,8 +102,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     HttpClientModule,
     ProfilComponent,
     DashboardComponent,
-    
-    
+    RoomComponent,
+    MessageComponent
   ]
 })
 export class CoreModule { }

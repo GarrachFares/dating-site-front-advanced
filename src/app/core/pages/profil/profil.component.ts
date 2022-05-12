@@ -12,19 +12,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  
+
   user: UserI = this.authService.getLoggedInUser();
   public errorMessage =''
   edited:boolean=false;
 
   constructor(private authService: AuthService,private router:Router) { }
-  
+
 
   ngOnInit(): void {
   }
 
   editProfil(editform:NgForm){
     console.log(editform);
+    console.log("aaaaaaa")
     this.authService.editProfil(editform.value).subscribe(
       response => {
         if(response.message){
@@ -36,8 +37,8 @@ export class ProfilComponent implements OnInit {
       }
     )
     this.edited = true;
-    
+
   }
-  
+
 
 }

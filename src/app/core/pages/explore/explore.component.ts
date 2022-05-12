@@ -12,12 +12,12 @@ export class ExploreComponent implements OnInit {
   sidebar:boolean = false;
 
   constructor(private chatService:ChatService) { }
-  title=this.chatService.getMessage();
+  //title=this.chatService.getMessage();
 
-  
+
 
   ngOnInit(): void {
-    
+
   }
 
   processReq(status:boolean){
@@ -27,7 +27,7 @@ export class ExploreComponent implements OnInit {
     else{
       this.sidebar=status;
     }
-    
+
 
   }
 

@@ -22,7 +22,7 @@ export class AuthService {
 
   login(credentials:any){
     const cred = {username:credentials.username , password:credentials.password}
-    console.log(cred)
+    //console.log(cred)
     return this.http.post(this.apiUrl+'/auth/login',cred).pipe(
       tap((res:any) =>{
         res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
@@ -81,9 +81,9 @@ export class AuthService {
     if(!token){
       token = "{}"
     }
-    console.log(this.jwtHelper.decodeToken(token))
+    //console.log(this.jwtHelper.decodeToken(token))
     let tokenPayload = JSON.stringify(this.jwtHelper.decodeToken(token));
-    console.log(tokenPayload)
+    //console.log(tokenPayload)
     return tokenPayload;
   }
 
@@ -100,7 +100,7 @@ export class AuthService {
       tap((res:any) =>{
         //res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
         console.log(res);
-        
+
         this.router.navigate(['/explore'])
       }) ,
       catchError((err)=> {

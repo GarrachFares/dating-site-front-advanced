@@ -10,6 +10,7 @@ import { FAQComponent } from "./core/pages/faq/faq.component";
 import { HomeComponent } from "./core/pages/home/home.component";
 import { MessagingComponent } from "./core/pages/messaging/messaging.component";
 import { ProfilComponent } from "./core/pages/profil/profil.component";
+import {RoomComponent} from "./core/pages/messaging/room/room.component";
 
 
 
@@ -24,7 +25,7 @@ const APP_ROUTING: Routes=[
         {path:'profil',component:ProfilComponent}
     ]},
     {path:'messaging',component:MessagingComponent},
-    
+    {path:'room',component:RoomComponent}
     //{path:'sign-in',component:SignInComponent}
 ]
 

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="chat-content">
+    <div class="message">
+    <span *ngFor="let message of messages$[0] ">
+<!--      <h1> {{message.message}} </h1>-->
+      <app-message [message]="message" ></app-message>
+    </span>
+    </div>
+  </div>
+  <form (ngSubmit)="sendMessage(sendForm)" #sendForm="ngForm">
+    <div class="chat-send row">
+      <div class="col-2">
+        <input type="text" class="form-control" name="user" id="input-user" ngModel>
+      </div>
+      <div class="col-8">
+        <input type="text" class="form-control" name="message" id="input-message" ngModel>
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </form>
+
+</div>
