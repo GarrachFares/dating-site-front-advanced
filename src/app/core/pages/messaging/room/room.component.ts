@@ -5,6 +5,8 @@ import { map, startWith, tap } from 'rxjs/operators';
 import {RoomI} from "../../../Model/room.interface";
 import {ChatService} from "../../../services/chat-service/chat.service";
 import {MessageI, MessagePaginateI} from "../../../Model/message.interface";
+import {AuthService} from "../../../services/auth.service";
+import {UserI} from "../../../Model/user.interface";
 
 
 @Component({
@@ -14,26 +16,12 @@ import {MessageI, MessagePaginateI} from "../../../Model/message.interface";
 })
 export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
 
-
-  //messages$: Observable<MessagePaginateI> = this.chatService.getMessages()
-  /*.pipe(
-    map((messagePaginate: MessagePaginateI) => {
-      const items = messagePaginate.messages.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
-      messagePaginate.messages = items;
-      return messagePaginate;
-    })
-  );*/
   chatMessage: FormControl = new FormControl(null, [Validators.required]);
-  /*previousMessages = [{user : "farouk" ,message :"hello",
-  },
-    {user : "skander" ,message :"waaaa"},{user : "farouk" ,message :"hello"}
-                      ];*/
   messages$  = this.chatService.getMessages();
-
   messages: any;
+  me : UserI = this.authService.getLoggedInUser() ;
 
-
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService, private  authService :  AuthService) {}
 
   ngOnInit(): void {
     //console.log("messages "+ this.messages$)
