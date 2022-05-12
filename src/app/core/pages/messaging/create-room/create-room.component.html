@@ -16,7 +16,7 @@
             <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="text" class="form-control rounded-4"  placeholder="Room of Kings" ngModel name="description">
             <label >Description</label>
           </div>
-          <button (click)="createRoom(roomform)" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning"  type="submit">Create New Room</button>
+          <button (click)="createRoom(roomform)" data-bs-dismiss="modal" class="w-100 mb-2 btn btn-lg rounded-4 btn-warning"  type="submit">Create New Room</button>
         </form>
       </div>
     </div>
