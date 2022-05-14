@@ -113,4 +113,30 @@ export class AuthService {
         })})
    )
   }
+
+  changepassword(passwordsform:any){
+    const passwords = {
+      oldpassword:passwordsform.currentpassword,
+      newpassword:passwordsform.newpassword,
+      id:passwordsform.id
+    }
+    return this.http.post(this.apiUrl+'/auth/changepassword',passwords).pipe(
+      tap((res:any) =>{
+       // res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        console.log(res);
+        window.location.reload()
+        this.router.navigate(['/explore'])
+      }) ,
+      catchError((err)=> {
+        return new Observable(res => {
+          let reqData = {
+            message:err.error,
+            status:err.status
+          }
+          res.next(reqData)
+        })})
+   )
+  }
+
+  
 }
