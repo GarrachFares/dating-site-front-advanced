@@ -34,6 +34,8 @@ import { ProfilComponent } from './pages/profil/profil.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import {RoomComponent} from "./pages/messaging/room/room.component";
 import {MessageComponent} from "./pages/messaging/message/message.component";
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import {ImageService} from "./services/image.service";
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -66,9 +68,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     ProfilComponent,
     DashboardComponent,
     RoomComponent,
-    MessageComponent
+    MessageComponent,
+    UploadImageComponent
   ],
-  providers: [AuthService],
+  providers: [AuthService,ImageService],
   imports: [
     CommonModule,
     BrowserModule,

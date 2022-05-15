@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 
@@ -19,7 +18,7 @@ export class SignUpComponent implements OnInit {
 
 
 
-  public invalidLogin = false 
+  public invalidLogin = false
   public errorMessage =''
 
   constructor(private http:HttpClient , private authService : AuthService) { }
@@ -28,10 +27,10 @@ export class SignUpComponent implements OnInit {
     this.http.get('https://restcountries.com/v3.1/all').subscribe(
       (response)=>{
         console.log(response);
-        
-        
+
+
         this.countries=response
-       
+
 
       },
 
@@ -53,7 +52,7 @@ export class SignUpComponent implements OnInit {
   logger(form:NgForm){
 
     console.log(form);
-    
+
 
   }
   register(form:NgForm){

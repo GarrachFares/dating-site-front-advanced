@@ -32,8 +32,8 @@
           <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" class="form-control" id="inputemail" placeholder="gg@mail.com" ngModel name="email" #email="ngModel">
           <div class="alert alert-danger" *ngIf="email.invalid && email.dirty">email must be of form "cc@aaa.tt"</div>
         </div>
-        
-        
+
+
         <div class="col-md-6">
           <label for="inputContry" class="form-label">Country</label>
           <select class="form-select" aria-label="Default select example"id="inputContry" ngModel name="country" #country="ngModel">
@@ -50,15 +50,17 @@
           [placeholder]="'Select Your Passions'"
         [settings]="dropdownSettings"
         [data]="dropdownList">
-    </ng-multiselect-dropdown>
+            </ng-multiselect-dropdown>
         </div>
-        
-      
-  
+      <div class="col-md-6">
+      <app-upload-image></app-upload-image>
+      </div>
 
 
-        
-        <div class="col-12">
+
+
+
+      <div class="col-12">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
