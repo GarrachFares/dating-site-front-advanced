@@ -9,5 +9,6 @@ export interface UserI {
     birthdate?:string;
     firstname?:string;
     lastname?:string;
+    image?:string;
 
   }

@@ -4,21 +4,35 @@ import { AuthService } from '../../services/auth.service';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ImageService } from '../../services/image.service';
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css'],
 })
+
+
 export class ProfilComponent implements OnInit {
   user: UserI = this.authService.getLoggedInUser();
   public errorMessage = '';
   edited: boolean = false;
   passerror: boolean = false;
+  selectedFile!: ImageSnippet;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router,private imageService: ImageService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("AAAAAAAAAAA");
+    console.log(this.user.image);
+    
+    
+    
+  }
 
   editProfil(editform: NgForm) {
     console.log(editform.value.username);
@@ -58,5 +72,32 @@ export class ProfilComponent implements OnInit {
       }
     });
     
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+      this.imageService.uploadImage(this.selectedFile.file).subscribe(
+        (res) => {
+
+          console.log("AAAAAAAAAA");
+          res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+          
+          window.location.reload()
+          
+          //this.imageService.getImage(res.filename)
+
+        },
+        (err) => {
+
+        })
+    });
+
+    reader.readAsDataURL(file);
   }
 }
