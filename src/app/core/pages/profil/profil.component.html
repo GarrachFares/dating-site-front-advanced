@@ -21,7 +21,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <img src="http://localhost:3000/auth/image/{{user.image}}" alt="Profile" class="rounded-circle">
               <h2>{{user.username}}</h2>
               <h3>{{user.email}}</h3>
               <div class="social-links mt-2">
@@ -51,7 +51,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Upload image</button>
                 </li>
 
                 <li class="nav-item">
@@ -211,8 +211,21 @@
 
                   <!-- Settings Form -->
                   <form>
+                    
+
 
                     <div class="row mb-3">
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label"><b> Upload New Image </b></label>
+                        <div class="input-group">
+                          
+                          <input type="file" class="form-control" id="" aria-label="Upload" name="image" #imageInput>
+                          <button type="submit" class="btn btn-primary" id="" (click)="processFile(imageInput)">Upload</button>
+                        </div>
+                    </div>
+                  </form>
+                  
+
+                    <!--<div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
                       <div class="col-md-8 col-lg-9">
                         <div class="form-check">
@@ -245,7 +258,7 @@
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form><!-- End settings Form -->
+                  </form> End settings Form -->
 
                 </div>
 
