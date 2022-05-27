@@ -36,6 +36,8 @@ import {RoomComponent} from "./pages/messaging/room/room.component";
 import {MessageComponent} from "./pages/messaging/message/message.component";
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import {ImageService} from "./services/image.service";
+import { ChoiceComponent } from './pages/choice/choice.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -69,7 +71,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     DashboardComponent,
     RoomComponent,
     MessageComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    ChoiceComponent
   ],
   providers: [AuthService,ImageService],
   imports: [
@@ -82,7 +85,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     MatPaginatorModule,
     MatCardModule,
     MatListModule ,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    DragDropModule
 
    // MatSelectCountryModule.forRoot('de')
 

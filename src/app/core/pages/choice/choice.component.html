@@ -1,0 +1,11 @@
+<h2 class="text-center"> Drag and drop to order </h2>
+
+<div class="list">
+
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let person of people" cdkDrag>{{person}}</div>
+      </div>
+
+  </div>
+
+
