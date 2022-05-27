@@ -11,6 +11,7 @@ import { HomeComponent } from "./core/pages/home/home.component";
 import { MessagingComponent } from "./core/pages/messaging/messaging.component";
 import { ProfilComponent } from "./core/pages/profil/profil.component";
 import {RoomComponent} from "./core/pages/messaging/room/room.component";
+import {ChoiceComponent} from "./core/pages/choice/choice.component";
 
 
 
@@ -25,7 +26,8 @@ const APP_ROUTING: Routes=[
         {path:'profil',component:ProfilComponent}
     ]},
     {path:'messaging',component:MessagingComponent},
-    {path:'room',component:RoomComponent}
+    {path:'room',component:RoomComponent},
+    {path:'choice',component:ChoiceComponent}
     //{path:'sign-in',component:SignInComponent}
 ]
 
