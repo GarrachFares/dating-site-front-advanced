@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  
+
   @Output() toggle_sidebar = new EventEmitter();
   user: UserI = this.authService.getLoggedInUser();
 
@@ -18,14 +18,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  sendEvent(){
-    
-    this.toggle_sidebar.emit(true);
-  }
 
-  logout(){
-    this.authService.logout();
-  }
+
+
+
 
 }

@@ -39,6 +39,11 @@ import {ImageService} from "./services/image.service";
 import { ChoiceComponent } from './pages/choice/choice.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatGridListModule} from "@angular/material/grid-list";
+import { NotificationNavComponent } from './components/notification-nav/notification-nav.component';
+import { MessagesNavComponent } from './components/messages-nav/messages-nav.component';
+import {SearchBarComponent} from "./components/search-bar/search-bar.component";
+import { ProfileNavComponent } from './components/profile-nav/profile-nav.component';
+import { LogoNavComponent } from './components/logo-nav/logo-nav.component';
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -73,7 +78,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     RoomComponent,
     MessageComponent,
     UploadImageComponent,
-    ChoiceComponent
+    ChoiceComponent,
+    NotificationNavComponent,
+    MessagesNavComponent,
+    SearchBarComponent,
+    ProfileNavComponent,
+    LogoNavComponent
   ],
   providers: [AuthService,ImageService],
     imports: [

@@ -1,19 +1,9 @@
 <body [ngClass]="{ 'toggle-sidebar': sidebar }">
     <router-outlet></router-outlet>
     <main id="main" class="main">
-        
-<app-header (toggle_sidebar)="processReq($event)"></app-header>
-<app-sidebar></app-sidebar>
-
-
-  
-  
-    
-
-   
-  </main>
-  
-
+      <app-header (toggle_sidebar)="processReq($event)"></app-header>
+      <app-sidebar></app-sidebar>
+    </main>
 </body>
 
 <script src="assets/js/main.js"></script>
