@@ -10,6 +10,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
+  
   apiUrl = 'http://localhost:3000'
   constructor(private http:HttpClient,
               private router:Router,
@@ -53,7 +54,7 @@ export class AuthService {
     return this.http.post(this.apiUrl+'/auth/register',cred).pipe(
       tap((res:any) =>{
         res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
-        this.router.navigate(['explore'])
+        this.router.navigate(['categories'])
       }) ,
       catchError((err)=> {
         return new Observable(res => {
@@ -125,6 +126,27 @@ export class AuthService {
        // res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
         console.log(res);
         window.location.reload()
+        this.router.navigate(['/explore'])
+      }) ,
+      catchError((err)=> {
+        return new Observable(res => {
+          let reqData = {
+            message:err.error,
+            status:err.status
+          }
+          res.next(reqData)
+        })})
+   )
+  }
+
+  addCategories( mycategories: string[]) {
+
+    
+    
+    return this.http.post(this.apiUrl+'/auth/add',mycategories).pipe(
+      tap((res:any) =>{
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        console.log(res);
         this.router.navigate(['/explore'])
       }) ,
       catchError((err)=> {

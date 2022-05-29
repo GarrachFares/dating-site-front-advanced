@@ -10,5 +10,6 @@ export interface UserI {
     firstname?:string;
     lastname?:string;
     image?:string;
+    categories?:string[];
 
   }

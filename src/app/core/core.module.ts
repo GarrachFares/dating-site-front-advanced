@@ -44,6 +44,7 @@ import { MessagesNavComponent } from './components/messages-nav/messages-nav.com
 import {SearchBarComponent} from "./components/search-bar/search-bar.component";
 import { ProfileNavComponent } from './components/profile-nav/profile-nav.component';
 import { LogoNavComponent } from './components/logo-nav/logo-nav.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -83,7 +84,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     MessagesNavComponent,
     SearchBarComponent,
     ProfileNavComponent,
-    LogoNavComponent
+    LogoNavComponent,
+    CategoriesComponent
   ],
   providers: [AuthService,ImageService],
     imports: [
@@ -122,7 +124,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     ProfilComponent,
     DashboardComponent,
     RoomComponent,
-    MessageComponent
+    MessageComponent,
+    CategoriesComponent
   ]
 })
 export class CoreModule { }
