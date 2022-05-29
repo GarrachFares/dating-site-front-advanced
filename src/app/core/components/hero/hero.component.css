@@ -1,0 +1,12 @@
+
+
+old-yellow{
+    color: #ffee88;
+}
+
+.back-img{
+    /* Background pattern from Toptal Subtle Patterns */
+   background-image: url("../../../../assets/images/conversation.svg");
+   height: 400px;
+   width: 100%;
+}
