@@ -1,8 +1,7 @@
 <div class="container">
   <div class="chat-content">
     <div class="message">
-    <span *ngFor="let message of messages$[0] ">
-<!--      <h1> {{message.message}} </h1>-->
+    <span *ngFor="let message of (messages$ | async)?.items ">
       <app-message [message]="message" ></app-message>
     </span>
     </div>
@@ -16,7 +15,7 @@
         <input type="text" class="form-control" name="message" id="input-message" ngModel>
       </div>
       <div class="col-2">
-        <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" class="btn btn-primary">Send hello</button>
       </div>
     </div>
   </form>

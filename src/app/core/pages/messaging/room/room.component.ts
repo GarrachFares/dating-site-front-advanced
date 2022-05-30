@@ -7,6 +7,7 @@ import {ChatService} from "../../../services/chat-service/chat.service";
 import {MessageI, MessagePaginateI} from "../../../Model/message.interface";
 import {AuthService} from "../../../services/auth.service";
 import {UserI} from "../../../Model/user.interface";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,27 +16,58 @@ import {UserI} from "../../../Model/user.interface";
   styleUrls: ['./room.component.css']
 })
 export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
+  //me : UserI = this.authService.getLoggedInUser() ;
 
+  chatRoom : RoomI = {
+    // id:1111,
+    // name:"yooo",
+    // users:[this.me],
+  };
   chatMessage: FormControl = new FormControl(null, [Validators.required]);
-  messages$  = this.chatService.getMessages();
-  messages: any;
-  me : UserI = this.authService.getLoggedInUser() ;
+  //messages$ : Observable<MessagePaginateI>  = this.chatService.getMessages();
+  messages$ : Observable<MessagePaginateI> = combineLatest([this.chatService.getMessages(),this.chatService.getAddedMessage().pipe(startWith(null))]).pipe(
+    map(([messagePaginate,message])=>{
+      if(message && message.room.id == this.chatRoom.id){
+        messagePaginate.items.push(message);
+      }
+      //const items= messagePaginate.items.sort((a:any,b:any)=> a.created_at?.getTime() - b.created_at?.getTime());
+      //messagePaginate.items = items;
+      return messagePaginate;
+    })
+  )
 
-  constructor(private chatService: ChatService, private  authService :  AuthService) {}
+
+
+  messages: any;
+  
+  constructor(private router:Router ,private chatService: ChatService, private  authService :  AuthService) {}
 
   ngOnInit(): void {
-    //console.log("messages "+ this.messages$)
-
-    console.log(this.messages$)
+    if(this.chatService.joinedRoom){
+      this.chatRoom = this.chatService.joinedRoom;
+    }else{
+      //navigate to /explore
+      this.chatService.leaveRoom(this.chatRoom)
+      this.router.navigate(['/explore']);
+      return ;
+      //console.log("no room")
+    }
+    this.chatService.joinRoom(this.chatRoom);
+    // this.messages$.subscribe(data => {
+    //   console.log(data.items)
+    // })
 
   }
 
   ngOnDestroy(): void {
+    this.chatService.leaveRoom(this.chatRoom)
+    console.log("leave")
   }
 
   sendMessage(sendForm: NgForm) {
-    const message : MessageI = sendForm.form.getRawValue()
-    this.chatService.sendMessage(message);
+   // const message : MessageI = sendForm.form.getRawValue()
+    this.chatService.sendMessage({message:sendForm.value.message,room:this.chatRoom});
+    //console.log(sendForm.value)
     sendForm.controls['message'].reset();
   }
 
@@ -43,7 +75,12 @@ export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.messages$ =  this.chatService.getMessages();
+    //this.messages$ =  this.chatService.getMessages();
     //console.log(typeof this.messages$.pop())
+    // console.log(this.chatRoom)
+    // console.log(this.messages$)
+    // if(this.chatRoom){
+    //   this.chatService.joinRoom(this.chatRoom);
+    // }
   }
 }

@@ -10,31 +10,46 @@ import {Observable} from "rxjs";
 })
 export class ChatService {
 
+  joinedRoom : RoomI | null = null ;
   constructor(private socket: Socket) { }
 
+  setJoinedRoom(room:RoomI){
+    this.joinedRoom = room ;
+  }
+
+  joinRoom(room:RoomI){
+    this.socket.emit('joinRoom', room);
+  }
+
+  leaveRoom(room:RoomI){
+    this.socket.emit('leaveRoom', room);
+  }
 
   emitPaginateRooms(limit: number, page: number) {
     this.socket.emit('paginateRooms', { limit, page });
   }
 
   sendMessage(message : MessageI) {
-    this.socket.emit('sendMessage',message)
+    //this.socket.emit('sendMessage',message)
+    console.log(message)
+    this.socket.emit('addMessage',message)
   }
 
-  getMessages()  {
-    this.socket.emit('getMessages');
-    let messages: any[] = [];
-    this.socket.on('messages',(data : any)=>messages.push(data))
-    console.log("messages : ", typeof messages)
-    return messages
+  getMessages() : Observable<MessagePaginateI> {
+    return this.socket.fromEvent<MessagePaginateI>('messages')
   }
 
   getMyRooms() {
     return this.socket.fromEvent<RoomPaginateI>('rooms');
   }
 
+
   createRoom(room : RoomI){
     this.socket.emit('createRoom', room);
   }
+
+  getAddedMessage():Observable<MessageI>{
+    return this.socket.fromEvent<MessageI>('messageAdded')
+  } 
 
 }
