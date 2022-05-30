@@ -7,8 +7,8 @@ import { AuthService } from './core/services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myapp';
-  //show: boolean = this.authService.getDecodedToken()=== '{}'
+  title = 'Rooms';
+  //show: boolean = this.authService.getLoggedInUser()=== '{}'
 
   constructor(private authService : AuthService) { }
   
