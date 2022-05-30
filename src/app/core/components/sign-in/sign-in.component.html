@@ -9,7 +9,7 @@
     
           <div class="modal-body p-5 pt-0">
             <form #loginform="ngForm">
-              <div class="alert alert-danger" *ngIf="this.invalidLogin">{{this.errorMessage}}</div>
+              <div class="alert alert-danger" *ngIf="this.invalidLogin">{{ errorMessage }}</div>
                
               <div class="form-floating mb-3">
                 <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" ngModel name="username" #username="ngModel">
