@@ -27,7 +27,8 @@ export class AuthService {
     return this.http.post(this.apiUrl+'/auth/login',cred).pipe(
       tap((res:any) =>{
         res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
-        this.router.navigate(['explore'])
+        //this.router.navigate(['explore'])
+        window.location.href="/explore" ;
       }) ,
       catchError((err)=> {
         return new Observable(res => {
@@ -69,18 +70,22 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('Token')
-    this.router.navigate(['/login'])
+    this.router.navigate(['/'])
   }
 
   getLoggedInUser() {
     let token = this.getDecodedToken();
+    if(!token){
+      return null;
+    }
     return JSON.parse(token) ;
   }
 
   getDecodedToken(){
     let token = localStorage.getItem('Token')
     if(!token){
-      token = "{}"
+      // token = "{}"
+      return null ;
     }
     //console.log(this.jwtHelper.decodeToken(token))
     let tokenPayload = JSON.stringify(this.jwtHelper.decodeToken(token));

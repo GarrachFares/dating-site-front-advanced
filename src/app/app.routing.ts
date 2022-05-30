@@ -13,21 +13,23 @@ import { ProfilComponent } from "./core/pages/profil/profil.component";
 import {RoomComponent} from "./core/pages/messaging/room/room.component";
 import {ChoiceComponent} from "./core/pages/choice/choice.component";
 import { CategoriesComponent } from "./core/pages/categories/categories.component";
+import { AuthGuard } from "./core/guards/auth.guard";
+import { SignedInGuard } from "./core/guards/signed-in.guard";
 
 
 
 const APP_ROUTING: Routes=[
     {path:'home',redirectTo:'/',pathMatch:'full'},
-    {path:'',component:HomeComponent},
+    {path:'',component:HomeComponent,canActivate: [SignedInGuard]},
     {path:'contact',component:ContactComponent},
-    {path:'sign-up',component:SignUpComponent},
+    {path:'sign-up',component:SignUpComponent ,canActivate: [SignedInGuard]},
     {path:'faq',component:FAQComponent},
     {path:'explore',component:ExploreComponent,children:[
         {path:'',component:DashboardComponent},
         {path:'profil',component:ProfilComponent}
-    ]},
+    ], canActivate: [AuthGuard]},
     {path:'messaging',component:MessagingComponent},
-    {path:'room',component:RoomComponent},
+    {path:'room',component:RoomComponent, canActivate: [AuthGuard]},
     {path:'choice',component:ChoiceComponent},
     {path:'categories',component:CategoriesComponent}
     //{path:'sign-in',component:SignInComponent}

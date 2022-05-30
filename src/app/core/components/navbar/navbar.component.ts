@@ -10,13 +10,13 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
 
    
-   show:boolean = false;
+   show:boolean = true;
 
   constructor(private authService : AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.notloggedin());
-     
+    //console.log(this.notloggedin());
+   // this.show = this.authService.userIsLoggedIn() 
   }
   
   //isloggedin(){

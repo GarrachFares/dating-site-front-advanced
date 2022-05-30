@@ -24,7 +24,7 @@ export class SignInComponent implements OnInit {
     this.authService.login(form.value).subscribe(
       response => {
         if(response.message){
-          this.errorMessage = response.message
+          this.errorMessage = response.message.message
           this.invalidLogin = true
         }else{
           console.log(response)
