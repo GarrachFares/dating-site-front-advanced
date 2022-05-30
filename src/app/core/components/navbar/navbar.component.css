@@ -1,7 +1,10 @@
 .listyle:hover{
-    color: #4154f1 !important;;
+    color: #060a28 !important;;
  }
 
  .blue{
     color: #4154f1;
+}
+.bg-color{
+    background-color: #4154f1;
 }
