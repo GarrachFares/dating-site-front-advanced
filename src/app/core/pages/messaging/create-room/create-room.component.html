@@ -16,9 +16,31 @@
             <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="text" class="form-control rounded-4"  placeholder="Room of Kings" ngModel name="description">
             <label >Description</label>
           </div>
-          <div class="form-floating mb-3">
+          <!---<div class="form-floating mb-3">
             <input required  type="text" class="form-control rounded-4"  placeholder="Room of Kings" ngModel name="category">
             <label >category</label>
+          </div>
+        -->
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Categories</label>
+            <select class="form-select" id="inputGroupSelect01" ngModel name="category">
+              <option value="1">football</option>
+              <option value="2">basketball</option>
+              <option value="3">theater</option>
+              <option value="4">cinema</option>
+              <option value="5">gaming</option>
+              <option value="6">reading</option>
+              <option value="7">music</option>
+              <option value="8">math</option>
+              <option value="9">programing</option>
+              <option value="10">physics</option>
+              <option value="11">politics</option>
+              <option value="12">love</option>
+              <option value="13">meeting</option>
+              <option value="14">food</option>
+              <option value="15">buisnes</option>
+              <option value="16">health</option>
+            </select>
           </div>
           <button (click)="createRoom(roomform)" data-bs-dismiss="modal" class="w-100 mb-2 btn btn-lg rounded-4 btn-primary"  type="submit">Create New Room</button>
         </form>
