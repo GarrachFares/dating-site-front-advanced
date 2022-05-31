@@ -144,17 +144,15 @@ export class AuthService {
    )
   }
 
-  addCategories( mycategories: string[]) {
-
-    
-    
-    return this.http.post(this.apiUrl+'/auth/add',mycategories).pipe(
+  addCategories( mycategories: number[]) {
+    return this.http.post(this.apiUrl+'/user/addcategories',{categories:mycategories}).pipe(
       tap((res:any) =>{
-        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        //res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
         console.log(res);
-        this.router.navigate(['/explore'])
+        //this.router.navigate(['/explore'])
       }) ,
       catchError((err)=> {
+        console.log(err)
         return new Observable(res => {
           let reqData = {
             message:err.error,

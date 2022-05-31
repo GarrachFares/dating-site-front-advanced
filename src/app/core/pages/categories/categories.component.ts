@@ -20,7 +20,7 @@ class category {
 export class CategoriesComponent implements OnInit {
 
   categories!: category[];
-  mycategories!:string[];
+  mycategories!:number[];
   user: UserI = this.authService.getLoggedInUser();
   public errorMessage = '';
   get_categories(){
@@ -60,16 +60,19 @@ export class CategoriesComponent implements OnInit {
   }
 
   sendcat(form:NgForm){
-    this.mycategories=this.categories.filter(cat=>cat.isselected==true).map(cat=>cat.name)
+    this.mycategories=this.categories.filter(cat=>cat.isselected==true).map(cat=>cat.id)
     console.log(form);
     console.log("these are my choices: "+ this.mycategories);
-    this.authService.addCategories(this.mycategories).subscribe((response) => {
+    
+    this.authService.addCategories(this.mycategories
+      ).subscribe((response) => {
       if (response.message) {
         this.errorMessage = response.message;
         console.log(this.errorMessage);
       } else {
        
-        console.log(response);
+        console.log("it worked ... i guess",response);
+        this.router.navigate(['/explore']);
        
        
       }
