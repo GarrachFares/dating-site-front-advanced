@@ -14,7 +14,6 @@ export class ChoiceComponent  {
   // TODO : change this to people of opposite gender
   people = ['Sadak77','Salah76','Ali3','Skander2'];
 
-
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.people, event.previousIndex, event.currentIndex);
   }

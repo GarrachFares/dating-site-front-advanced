@@ -11,5 +11,5 @@ export interface UserI {
     lastname?:string;
     image?:string;
     categories?:string[];
-
+    sexe? : string ;
   }
