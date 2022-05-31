@@ -25,6 +25,7 @@
           <div class="col-md-6">
             <label for="confirmPassword4" class="form-label">Confirm Password</label>
             <input required type="password" class="form-control" id="confirmPassword4" ngModel name="cpassword" #cpassword="ngModel" >
+            <div class="alert alert-danger" *ngIf="notMatch">password and confirm-password don't match</div>
            <!-- <div class="alert alert-danger" *ngIf="password.value!=cpass ">password must contain at least 1 Maj 1 Min and lengthmin of 7</div>-->
           </div>
         <div class="col-9">

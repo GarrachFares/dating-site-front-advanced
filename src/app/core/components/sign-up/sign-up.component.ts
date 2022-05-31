@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   dropdownList : object[] = [];
   dropdownSettings:IDropdownSettings={};
   countries: any;
+  notMatch:boolean=false
 
 
 
@@ -57,17 +58,23 @@ export class SignUpComponent implements OnInit {
   }
   register(form:NgForm){
     console.log(form);
-    this.authService.register(form.value).subscribe(
-      response => {
-        if(response.message){
-          this.errorMessage = response.message
-          this.invalidLogin = true
-          console.log(this.errorMessage)
-        }else{
-          console.log(response)
+    if(form.value.password!=form.value.cpassword){
+      this.notMatch=true
+    }
+    else{
+      this.authService.register(form.value).subscribe(
+        response => {
+          if(response.message){
+            this.errorMessage = response.message
+            this.invalidLogin = true
+            console.log(this.errorMessage)
+          }else{
+            console.log(response)
+          }
         }
-      }
-    )
+      )
+    }
+    
 
   }
 
