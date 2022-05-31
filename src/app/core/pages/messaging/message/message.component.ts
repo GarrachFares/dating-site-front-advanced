@@ -18,4 +18,11 @@ export class MessageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showdate(created_at:any){
+
+    const date =JSON.stringify(created_at);
+    return date.substring(12,17)
+
+  }
+
 }
