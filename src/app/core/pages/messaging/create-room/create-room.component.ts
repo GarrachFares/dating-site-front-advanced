@@ -16,7 +16,14 @@ export class CreateRoomComponent implements OnInit {
   }
 
   createRoom(roomform: NgForm) {
-    const room: RoomI = roomform.form.getRawValue();
+    const r = roomform.form.getRawValue();
+    const room: RoomI = {
+      name: r.name,
+      description: r.description,
+      category : { id : r.category},
+    }
+    //fix this after list choice is implemented
+    console.log(room);
     room.users = []
     this.chatService.createRoom(room);
   }

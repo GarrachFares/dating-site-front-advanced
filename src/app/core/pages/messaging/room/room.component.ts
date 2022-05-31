@@ -25,6 +25,8 @@ export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
   };
   chatMessage: FormControl = new FormControl(null, [Validators.required]);
   //messages$ : Observable<MessagePaginateI>  = this.chatService.getMessages();
+  connectedUsers$ : Observable<UserI[]> = this.chatService.getConnectedUsers();
+
   messages$ : Observable<MessagePaginateI> = combineLatest([this.chatService.getMessages(),this.chatService.getAddedMessage().pipe(startWith(null))]).pipe(
     map(([messagePaginate,message])=>{
       if(message && message.room.id == this.chatRoom.id){

@@ -43,6 +43,9 @@ export class ChatService {
     return this.socket.fromEvent<RoomPaginateI>('rooms');
   }
 
+  getConnectedUsers() :Observable<UserI[]>  {
+    return this.socket.fromEvent<UserI[]>('connectedUserAdded')
+  }
 
   createRoom(room : RoomI){
     this.socket.emit('createRoom', room);

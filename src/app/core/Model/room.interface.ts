@@ -1,4 +1,5 @@
 
+import { CategoryI } from "./category.interface";
 import { Meta } from "./meta.interface";
 import { UserI } from "./user.interface";
 
@@ -9,6 +10,7 @@ export interface RoomI {
     users?: UserI[];
     created_at?: Date;
     updated_at?: Date;
+    category?: CategoryI;
   }
   
   export interface RoomPaginateI {
