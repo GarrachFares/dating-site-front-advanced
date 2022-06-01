@@ -14,12 +14,12 @@
               <div class="form-floating mb-3">
                 <input required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" class="form-control rounded-4" id="floatingInput" placeholder="name@example.com" ngModel name="username" #username="ngModel">
                 <label for="floatingInput">Email address</label>
-                <div class="alert alert-danger" *ngIf="username.invalid && username.dirty">email must be of form "cc@aaa.tt"</div>
+                <!-- <div class="alert alert-danger" *ngIf="username.invalid && username.dirty">email must be of form "cc@aaa.tt"</div> -->
               </div>
               <div class="form-floating mb-3">
                 <input required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" type="password" class="form-control rounded-4" id="floatingPassword" placeholder="Password" ngModel name="password" #password="ngModel">
                 <label for="floatingPassword">Password</label>
-                <div class="alert alert-danger" *ngIf="password.invalid && password.dirty">password must contain at least 1 Maj 1 Min and lengthmin of 7</div>
+                <!-- <div class="alert alert-danger" *ngIf="password.invalid && password.dirty">password must contain at least 1 Maj 1 Min and lengthmin of 7</div> -->
               </div>
               <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary " [disabled]="loginform.invalid"  type="submit"(click)="login(loginform)" >sign in</button>
               <small class="text-muted p-1">you don't have an account sign up!!</small>
