@@ -45,6 +45,9 @@ import {SearchBarComponent} from "./components/search-bar/search-bar.component";
 import { ProfileNavComponent } from './components/profile-nav/profile-nav.component';
 import { LogoNavComponent } from './components/logo-nav/logo-nav.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { MyRoomsComponent } from './pages/my-rooms/my-rooms.component';
+import { MatchedMessagingComponent } from './pages/matched-messaging/matched-messaging.component';
+import { MatchModalComponent } from './pages/messaging/room/match-modal/match-modal.component';
 export function tokenGetter() {
   return localStorage.getItem('Token') || '{}' ;
 }
@@ -85,7 +88,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {
     SearchBarComponent,
     ProfileNavComponent,
     LogoNavComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    MyRoomsComponent,
+    MatchedMessagingComponent,
+    MatchModalComponent
   ],
   providers: [AuthService,ImageService],
     imports: [

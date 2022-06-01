@@ -40,18 +40,38 @@
       <li class="nav-heading">Navigation</li>
 
       <li class="nav-item">
-        <a class="nav-link " [routerLink]="['profil']">
+        <a class="nav-link collapsed btn" routerLinkActive="btn-primary"  [routerLinkActiveOptions]="{exact:
+          true}" [routerLink]="['/explore']">
+          <i class="fa fa-user"></i>
+          <span>explore</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed btn" routerLinkActive="btn-primary"  [routerLinkActiveOptions]="{exact:
+          true}" [routerLink]="['/explore/myrooms']">
+          <i class="fa fa-user"></i>
+          <span>my rooms</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed btn" routerLinkActive="btn-primary"  [routerLinkActiveOptions]="{exact:
+          true}" [routerLink]="['profil']">
           <i class="fa fa-user"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed btn" [routerLink]="['/categories']">
+        <a class="nav-link collapsed btn" routerLinkActive="btn-primary"  [routerLinkActiveOptions]="{exact:
+          true}" [routerLink]="['/categories']">
           <i class="fa fa-user"></i>
           <span>manage Categories</span>
         </a>
       </li>
+
+      
 
       <li class="nav-item">
         <a class="nav-link collapsed btn" data-bs-toggle="modal" data-bs-target="#roomModal">
@@ -61,7 +81,7 @@
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" [routerLink]="['/faq']">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>

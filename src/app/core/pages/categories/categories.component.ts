@@ -19,6 +19,7 @@ class category {
 })
 export class CategoriesComponent implements OnInit {
 
+  previousCats! : category[] ;
   categories!: category[];
   mycategories!:number[];
   user: UserI = this.authService.getLoggedInUser();
@@ -50,8 +51,25 @@ export class CategoriesComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
+    console.log(this.user)
     this.get_categories();
+    this.authService.getCategories().subscribe((response) => {
+      if (response.message) {
+        this.errorMessage = response.message;
+        console.log(this.errorMessage);
+        this.previousCats = [];
+      } else {
+        this.previousCats = response;
+        this.categories = this.categories.map( cat=> { 
+          if(this.previousCats.find(previousCat=>previousCat.id==cat.id)){
+            cat.isselected=true;
+          return cat 
+        }else {
+          
+          return cat 
+        }});
+      }
+    });;
   }
 
   onchange(){

@@ -1,9 +1,13 @@
 
 <form #catform="ngForm" action="" class="border">
 <div class="wrapper">
-    <div class="title">
+    <div *ngIf="previousCats && previousCats.length== 0" class="title">
         <h3>Welcome <b> {{user.username}}</b> !!</h3>
         <h4>the final step is choosing you intrests</h4>
+    </div>
+    <div *ngIf="previousCats && previousCats.length != 0" class="title">
+      <h3>Hey <b> {{user.username}}</b></h3>
+      <h4>you can change your intrests any time !!</h4>
     </div>
   
     <div class="container">

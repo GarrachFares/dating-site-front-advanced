@@ -164,5 +164,24 @@ export class AuthService {
    )
   }
 
+  getCategories() {
+    return this.http.get(this.apiUrl+'/user/categories').pipe(
+      tap((res:any) =>{
+        //res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        console.log(res);
+        //this.router.navigate(['/explore'])
+      }) ,
+      catchError((err)=> {
+        console.log(err)
+        return new Observable(res => {
+          let reqData = {
+            message:err.error,
+            status:err.status
+          }
+          res.next(reqData)
+        })})
+   )
+  }
+
   
 }

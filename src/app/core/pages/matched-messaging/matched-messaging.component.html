@@ -1,0 +1,92 @@
+<!--TODO: refactor this with hero page-->
+<div class="container-fluid">
+    <div
+      class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+      style="background-color: #4154f1;"
+    >
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-bold lh-1">
+          Welcome Back {{ user.username }}
+        </h1>
+        <p class="lead">
+          explore rooms below and join the one you please
+        </p>
+       <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+          <a class="btn btn-info" aria-current="page" [routerLink]="['sign-up']" routerLinkActive="active"> Create a new room</a>
+        </div>
+        <button type="button" class="btn btn-outline-info w-auto me-1 mb-0 " data-bs-toggle="modal" data-bs-target="#roomModal">
+          Create a new room
+        </button>
+        -->
+      </div>
+      <div class="col-lg-4">
+        <img src="" alt="" />
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div *ngFor="let room of (rooms$ | async)?.items">
+      <h1>name :{{room.name}}</h1>
+      <h1>id :{{room.id}}</h1>
+  </div> -->
+  <br>
+  <div class="container">
+    <div class="row card-group">
+      <div class="col-4" *ngFor="let room of (rooms$ | async)?.items">
+        <app-explore-card [name]="room.name!" [description]="room.description!" [room]="room"></app-explore-card>
+      </div>
+    </div>
+    <div style="  display: flex; justify-content: center">
+      <mat-paginator [length]="(rooms$ | async)?.meta?.totalItems" [pageIndex]="(rooms$ | async)?.meta?.currentPage"
+                     [pageSize]="(rooms$ | async)?.meta?.itemsPerPage" (page)="onPaginateRooms($event)"
+                     [pageSizeOptions]="[10,25,50]">
+      </mat-paginator>
+    </div>
+  </div>
+        <!--<div style="display: flex; flex-direction: row;">
+  
+          <div>
+            <div>
+              <span style="display: flex; flex-direction: row; align-items: baseline;">
+                <h2>My Chatrooms</h2>
+              &lt;!&ndash;   <small style="margin-left:10px;">Logged in as {{user.username}}</small> &ndash;&gt;
+              </span>
+             &lt;!&ndash; <button  [routerLink]="['../create-room']">Create new Room</button> &ndash;&gt;
+            </div>
+  
+            &lt;!&ndash; <div   *ngIf="(rooms$|async)?.items?.length > 0; else no_rooms" class="rooms"> &ndash;&gt;
+              <div   *ngIf="true" class="rooms">
+              <mat-selection-list [multiple]="false" (selectionChange)="onSelectRoom($event)">
+                <mat-list-option *ngFor="let room of (rooms$ | async)?.items" [value]="room">
+                  Name: {{room.name}} Id: {{room.id}}
+                  <mat-divider></mat-divider>
+                </mat-list-option>
+              </mat-selection-list>
+              <mat-paginator [length]="(rooms$ | async)?.meta?.totalItems" [pageIndex]="(rooms$ | async)?.meta?.currentPage"
+                [pageSize]="(rooms$ | async)?.meta?.itemsPerPage" (page)="onPaginateRooms($event)"
+                [pageSizeOptions]="[10,25,50]"></mat-paginator>
+            </div>
+          </div>
+  
+          <div>
+            <h1>
+              My Room
+            </h1>
+            {{ selectedRoom | json }}
+          </div>
+          &lt;!&ndash;-->
+     <!--     <div class="chatroom">
+            <app-chat-room [chatRoom]="selectedRoom"></app-chat-room>
+  
+          </div>
+        &ndash;&gt;
+        </div>-->
+  
+  
+  
+    <ng-template #no_rooms>
+      <div>
+        No Chatrooms for you so far, please create one or get invited
+      </div>
+    </ng-template>
+  

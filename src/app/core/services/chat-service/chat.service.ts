@@ -29,6 +29,10 @@ export class ChatService {
     this.socket.emit('paginateRooms', { limit, page });
   }
 
+  emitPaginateMyRooms(limit: number, page: number) {
+    this.socket.emit('paginateMatchedRooms', { limit, page });
+  }
+
   sendMessage(message : MessageI) {
     //this.socket.emit('sendMessage',message)
     console.log(message)
@@ -43,6 +47,10 @@ export class ChatService {
     return this.socket.fromEvent<RoomPaginateI>('rooms');
   }
 
+  getMyMatchedRooms() {
+    return this.socket.fromEvent<RoomPaginateI>('matchedRooms');
+  }
+
   getConnectedUsers() :Observable<UserI[]>  {
     return this.socket.fromEvent<UserI[]>('connectedUserAdded')
   }
@@ -51,8 +59,18 @@ export class ChatService {
     this.socket.emit('createRoom', room);
   }
 
+  sendChoice(data : any){
+    this.socket.emit('sendChoice', data);
+  }
+
   getAddedMessage():Observable<MessageI>{
     return this.socket.fromEvent<MessageI>('messageAdded')
   } 
+
+  getMyMatchedRoom() {
+    return this.socket.fromEvent<RoomI>('matchedRoom');
+  }
+
+
 
 }

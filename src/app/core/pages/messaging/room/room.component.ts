@@ -59,6 +59,17 @@ export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
     //   console.log(data.items)
     // })
 
+    this.chatService.getMyMatchedRoom().subscribe(data=>{
+      window.alert("you matched !",);
+
+      if(data){
+        console.log(data)
+        
+        this.chatService.setJoinedRoom(data)
+      this.router.navigate(['/room']);
+      }
+    })
+
   }
 
   ngOnDestroy(): void {
