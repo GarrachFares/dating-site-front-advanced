@@ -11,6 +11,7 @@ export interface RoomI {
     created_at?: Date;
     updated_at?: Date;
     category?: CategoryI;
+    image?:string;
   }
   
   export interface RoomPaginateI {

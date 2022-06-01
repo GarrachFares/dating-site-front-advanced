@@ -1,9 +1,27 @@
 <div class="card" style="width: 18rem;">
-  <!-- <img class="card-img-top" src="https://img.mobiscroll.com/demos/gridlayout/toucan.jpg" alt="Card image cap"> -->
+  <img *ngIf="image else elseblock" class="card-img-top" src="http://localhost:3000/chat/image/{{image}}" alt="Card image cap">
+  <ng-template #elseblock><i class="fa-solid fa-comments fa-2xl blue"></i></ng-template>
   <div class="card-body">
     <h2 class="card-title">{{name}}</h2>
     <p class="card-text">{{description}}</p>
     <a  (click)="joinRoom()" class="btn btn-primary m-1">join</a>
     <!-- <a [routerLink]="['/choice']" class="btn btn-primary m-1">Rank</a> -->
+    <!-- <input type="file" class="form-control" id="" aria-label="Upload" name="image" #imageInput>
+                          <button type="submit" class="btn btn-primary" id="" (click)="processFile(imageInput)">Upload <i class="fa-solid fa-upload"></i></button> -->
+                          <div *ngIf="owner" class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Add a Cover image
+                              </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                <input type="file" class="form-control" id="" aria-label="Upload" name="image" #imageInput>
+                                <button type="submit" class="btn btn-primary m-1" id="" (click)="processFile(imageInput)">Upload <i class="fa-solid fa-upload"></i></button>
+
+                              </div>
+                              
+                            </div>
+                          </div>
   </div>
 </div>

@@ -33,7 +33,7 @@
 <div class="container">
   <div class="row card-group">
     <div class="col-4" *ngFor="let room of (rooms$ | async)?.items">
-      <app-explore-card [name]="room.name!" [description]="room.description!" [room]="room"></app-explore-card>
+      <app-explore-card [name]="room.name!" [description]="room.description!" [room]="room" [image]="room.image!"></app-explore-card>
     </div>
   </div>
   <div style="  display: flex; justify-content: center">

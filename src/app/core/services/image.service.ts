@@ -34,6 +34,29 @@ export class ImageService {
     );
   }
 
+  public uploadRoomImage(image: File,id:any): Observable<any> {
+    const formData = new FormData();
+
+    formData.append('image', image);
+    formData.append('id', id);
+    console.log("aaaaaaaaa")
+
+    return this.http.post('http://localhost:3000/chat/upload', formData).pipe(
+      tap((res:any) =>{
+        res.hasOwnProperty('Token') && localStorage.setItem('Token',res.Token)
+        console.log(res);
+        window.location.reload()
+      }) ,
+      catchError((err)=> {
+        return new Observable(res => {
+          let reqData = {
+            message:err.error,
+            status:err.status
+          }
+          res.next(reqData)
+        })})
+    );
+  }
 
 
 }
