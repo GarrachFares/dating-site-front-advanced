@@ -5,12 +5,15 @@
     <h2 class="card-title">{{name}}</h2>
     <p class="card-text">{{description}}</p>
     <a  (click)="joinRoom()" class="btn btn-primary m-1">join</a>
+    <button *ngIf="owner" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal">
+      add image
+    </button>
     <!-- <a [routerLink]="['/choice']" class="btn btn-primary m-1">Rank</a> -->
     <!-- <input type="file" class="form-control" id="" aria-label="Upload" name="image" #imageInput>
                           <button type="submit" class="btn btn-primary" id="" (click)="processFile(imageInput)">Upload <i class="fa-solid fa-upload"></i></button> -->
-                          <div *ngIf="owner" class="accordion-item">
+                          <!-- <div *ngIf="owner" class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
-                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne " aria-expanded="false" aria-controls="flush-collapseOne">
                                 Add a Cover image
                               </button>
                             </h2>
@@ -22,6 +25,22 @@
                               </div>
                               
                             </div>
-                          </div>
+                          </div> -->
+  </div>
+</div>
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imageModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="file" class="form-control" id="" aria-label="Upload" name="image" #imageInput1>
+        <button type="submit" class="btn btn-primary m-1" id="" (click)="processFile(imageInput1)">Upload <i class="fa-solid fa-upload"></i></button>
+
+      </div>
+      
+    </div>
   </div>
 </div>
