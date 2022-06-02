@@ -26,7 +26,8 @@ import { Router } from '@angular/router';
 })
 export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
   //me : UserI = this.authService.getLoggedInUser() ;
-
+  notifActive = false
+  notifMsg = "You have matched with someone ! go to your rooms to find out with whom you've been matched!"
   chatRoom: RoomI = {
     // id:1111,
     // name:"yooo",
@@ -59,6 +60,7 @@ export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.notifActive = false
     if (this.chatService.joinedRoom) {
       this.chatRoom = this.chatService.joinedRoom;
     } else {
@@ -74,15 +76,30 @@ export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
     // })
 
     this.chatService.getMyMatchedRoom().subscribe((data) => {
-      window.alert(
-        "you matched ! go to your rooms to find out with whom you've been matched!"
-      );
+      // window.alert(
+      //   "you matched ! go to your rooms to find out with whom you've been matched!"
+      // );
 
       if (data) {
         console.log(data);
+        this.notifActive = true
 
+        const loggedUser = this.authService.getLoggedInUser();
+
+
+        let matchedUserName = "someone"
+        if(data.users){
+
+           const userNameA = data.users.filter(user => user.username !== loggedUser.username);
+           if(userNameA[0].username)
+            matchedUserName = userNameA[0].username;
+        }
+        
+        this.notifMsg = "You have matched with "+ matchedUserName + " ! check " + data.name + " in my rooms tab !";
+
+        //dont touch this pls :'(
         this.chatService.setJoinedRoom(data);
-        this.router.navigate(['/room']); 
+        this.router.navigate(['/explore/room']); 
       }
     });
   }
@@ -103,6 +120,9 @@ export class RoomComponent implements OnChanges, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {}
+  closeNotif() {
+    this.notifActive = false
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     //this.messages$ =  this.chatService.getMessages();

@@ -30,12 +30,13 @@ export class ExploreCardComponent implements OnInit {
 
   joinRoom(){
       this.chatService.setJoinedRoom(this.room)
-      this.router.navigate(['/room']);
+      this.router.navigate(['/explore/room']);
   }
 
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
+    
 
     reader.addEventListener('load', (event: any) => {
 

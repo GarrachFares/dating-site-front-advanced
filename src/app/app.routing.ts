@@ -28,10 +28,12 @@ const APP_ROUTING: Routes=[
     {path:'explore',component:ExploreComponent,children:[
         {path:'',component:DashboardComponent},
         {path:'profil',component:ProfilComponent},
-        {path:'myrooms',component:MyRoomsComponent}
+        {path:'myrooms',component:MyRoomsComponent} ,
+        {path:'room',component:RoomComponent, canActivate: [AuthGuard]},
+
     ], canActivate: [AuthGuard]},
     {path:'messaging',component:MessagingComponent},
-    {path:'room',component:RoomComponent, canActivate: [AuthGuard]},
+    // {path:'room',component:RoomComponent, canActivate: [AuthGuard]},
     {path:'choice',component:ChoiceComponent},
     {path:'categories',component:CategoriesComponent}
     //{path:'sign-in',component:SignInComponent}

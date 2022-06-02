@@ -16,7 +16,7 @@
     </li>
 
     <li>
-      <a class="dropdown-item d-flex align-items-center" [routerLink]="['profil']">
+      <a class="dropdown-item d-flex align-items-center" [routerLink]="['/explore/profil']">
         <i class="fa-solid fa-user"></i>
         <span>My Profile</span>
       </a>
@@ -26,7 +26,7 @@
     </li>
 
     <li>
-      <a class="dropdown-item d-flex align-items-center" [routerLink]="['profil']">
+      <a class="dropdown-item d-flex align-items-center" [routerLink]="['/explore/profil']">
         <i class="fa-solid fa-wrench"></i>
         <span>Account Settings</span>
       </a>
@@ -36,7 +36,7 @@
     </li>
 
     <li>
-      <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+      <a class="dropdown-item d-flex align-items-center" [routerLink]="['/faq']">
         <i class="fa-solid fa-question"></i>
         <span>Need Help?</span>
       </a>
@@ -46,9 +46,9 @@
     </li>
 
     <li>
-      <a class="dropdown-item d-flex align-items-center" >
+      <a class="dropdown-item d-flex align-items-center" (click)="logout()" [routerLink]="['/']">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        <span (click)="logout()">Sign Out</span>
+        <span >Sign Out</span>
       </a>
     </li>
 
